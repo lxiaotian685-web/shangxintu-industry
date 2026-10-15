@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed": "#ffdbce", "on-surface": "#111c2d", "on-tertiary": "#ffffff", "on-error": "#ffffff", "primary-container": "#cc4900", "surface-tint": "#a73a00", "surface-container": "#e7eeff", "secondary-fixed": "#e3dfff", "surface-container-lowest": "#ffffff", "on-primary-fixed-variant": "#7f2b00", "secondary-fixed-dim": "#c3c0ff", "surface-container-high": "#dee8ff", "tertiary-container": "#00855b", "error-container": "#ffdad6", "secondary-container": "#6860ef", "on-primary-container": "#fffbff", "primary": "#a33900", "on-primary": "#ffffff", "outline-variant": "#e2bfb2", "surface-container-low": "#f0f3ff", "tertiary-fixed": "#6ffbbe", "primary-fixed-dim": "#ffb599", "on-tertiary-fixed": "#002113", "tertiary-fixed-dim": "#4edea3", "background": "#f9f9ff", "on-tertiary-fixed-variant": "#005236", "on-secondary": "#ffffff", "on-secondary-container": "#fffbff", "surface-variant": "#d8e3fb", "on-surface-variant": "#5a4138", "surface-dim": "#cfdaf2", "secondary": "#4e45d5", "outline": "#8e7166", "on-tertiary-container": "#f5fff6", "surface-bright": "#f9f9ff", "error": "#ba1a1a", "on-secondary-fixed-variant": "#372abf", "inverse-surface": "#263143", "on-error-container": "#93000a", "on-primary-fixed": "#370e00", "surface": "#f9f9ff", "on-secondary-fixed": "#100069", "surface-container-highest": "#d8e3fb", "on-background": "#111c2d", "inverse-on-surface": "#ecf1ff", "tertiary": "#006947", "inverse-primary": "#ffb599" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-2xl": "2rem", "space-3xl": "2.5rem", "wechat-capsule-safe-top": "5.5rem", "space-sm": "0.75rem", "space-md": "1rem", "wechat-home-indicator-safe-bottom": "2.125rem", "space-xs": "0.5rem", "space-xl": "1.5rem", "space-lg": "1.25rem", "space-2xs": "0.25rem" }, "fontFamily": { "body-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-sm": ["16px", { "lineHeight": "22px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-xl": ["28px", { "lineHeight": "36px", "fontWeight": "700" }], "headline-lg": ["22px", { "lineHeight": "28px", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100vh;}body{overscroll-behavior-y:none;background-color:#f9f9ff;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,20px);}.pt-safe{padding-top:env(safe-area-inset-top,44px);}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] pt-safe"><div class="h-16 px-space-md flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-xs flex-1 min-w-0"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><span class="font-headline-md text-headline-md text-on-surface truncate tracking-tight">Workbench</span></div><div class="flex items-center justify-center shrink-0 bg-surface-container-high/60 backdrop-blur-md rounded-full px-space-xs py-[5px] gap-space-2xs"><button aria-label="更多操作" class="w-8 h-7 flex items-center justify-center text-on-surface hover:opacity-80 transition-opacity" type="button"><span class="material-symbols-outlined text-[18px]">more_horiz</span></button><div class="w-[1px] h-3.5 bg-outline-variant/30"></div><button aria-label="关闭" class="w-8 h-7 flex items-center justify-center text-on-surface hover:opacity-80 transition-opacity" type="button"><span class="material-symbols-outlined text-[16px]">radio_button_checked</span></button></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 bg-surface"><div class="flex flex-col w-full pb-32">
+<!-- 步骤进度指示器 (Progress Stepper) -->
+<div class="px-space-md pt-space-md pb-space-sm">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between relative">
+<!-- Connecting Track Underlay -->
+<div class="absolute left-6 right-6 top-3.5 h-[2px] bg-surface-container-high -z-0"></div>
+<div class="absolute left-6 w-1/4 top-3.5 h-[2px] bg-primary -z-0"></div>
+<!-- Step 1: Active -->
+<div class="flex flex-col items-center gap-space-2xs relative z-10">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-label-md text-label-md shadow-[0_0_0_3px_#ffdbce]">
+            1
+          </div>
+<span class="font-label-md text-label-md text-primary font-bold">上传商品</span>
+</div>
+<!-- Step 2: Next -->
+<div class="flex flex-col items-center gap-space-2xs relative z-10">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md text-label-md">
+            2
+          </div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">选模板</span>
+</div>
+<!-- Step 3: Final -->
+<div class="flex flex-col items-center gap-space-2xs relative z-10">
+<div class="w-7 h-7 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-label-md text-label-md">
+            3
+          </div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">制作图片</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 暖心拍摄指导小提示条 -->
+<div class="px-space-md mb-space-md">
+<div class="bg-primary-fixed/60 rounded-xl px-space-md py-space-sm flex items-start gap-space-xs shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-primary-fixed-variant leading-relaxed">
+<span class="font-bold">拍摄小建议：</span>商品完整入镜、自然柔和光线下出图效果最出彩。
+        </p>
+</div>
+</div>
+</div>
+<!-- 核心上传与照片预览交互区 -->
+<div class="px-space-md mb-space-lg">
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-2xs">
+<span class="w-1.5 h-3.5 bg-primary rounded-full"></span>
+<span class="font-headline-sm text-headline-sm text-on-surface">已选商品原图</span>
+</div>
+<span class="font-label-sm text-label-sm text-tertiary-container bg-tertiary-fixed/40 px-2 py-0.5 rounded-md">
+          已智能识别主体
+        </span>
+</div>
+<!-- Preview Image Canvas Card -->
+<div class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-container-low flex items-center justify-center group shadow-inner">
+<img class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" data-alt="A hand-thrown rustic ceramic latte coffee mug with speckled beige matte glaze, positioned organically on a natural warm oak table. Gentle diffused morning window lighting highlights the artisan clay texture, authentic studio pottery aesthetic, cozy and serene atmosphere with subtle warm terracotta earth tones." id="previewImage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyVV4qMyM_IAfhUJ2U5gkUeftOJPLYZqYDKzU45jfOFyernZxM1UShb8yy-r85ul82qCEYIztED8nrudbzFGjlzTn7kZRcqevKI8yF1Nz3V5aZQUBNHWrWy_d6kJzA7HTuKCg_Pjr0y4H7N7xQ9_Os7Y08FsHM4lCQpTRJYrXYe_G9GkikGKNfK9_FICa3bRxi0qVrxHjjSL06wq_9JEqSTrbo7DLwFZlbfftqIWdbc-6hxo8cK73X"/>
+<!-- Action Pill (Replace & Delete) -->
+<div class="absolute top-3 right-3 flex items-center gap-space-2xs bg-surface/90 backdrop-blur-md px-space-xs py-1.5 rounded-full shadow-md">
+<button aria-label="替换图片" class="flex items-center gap-1 text-on-surface hover:text-primary transition-colors px-2 py-0.5 rounded-full active:scale-95" id="btnReplacePhoto" type="button">
+<span class="material-symbols-outlined text-[16px]">cached</span>
+<span class="font-label-sm text-label-sm">替换</span>
+</button>
+<div class="w-[1px] h-3 bg-outline-variant/40"></div>
+<button aria-label="删除图片" class="flex items-center gap-1 text-error hover:opacity-80 transition-opacity px-2 py-0.5 rounded-full active:scale-95" id="btnRemovePhoto" type="button">
+<span class="material-symbols-outlined text-[16px]">delete</span>
+<span class="font-label-sm text-label-sm">删除</span>
+</button>
+</div>
+<!-- Touch Tag -->
+<div class="absolute bottom-3 left-3 bg-inverse-surface/75 backdrop-blur-sm text-inverse-on-surface px-2.5 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">aspect_ratio</span>
+<span class="font-label-sm text-label-sm">原片 4:3 · 高清</span>
+</div>
+</div>
+<!-- Quick Upload Alternative Triggers -->
+<div class="grid grid-cols-2 gap-space-sm pt-space-2xs">
+<button class="flex items-center justify-center gap-space-xs py-3 px-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-primary text-[20px]">photo_camera</span>
+<span class="font-label-md text-label-md text-on-surface">重拍一张</span>
+</button>
+<button class="flex items-center justify-center gap-space-xs py-3 px-space-sm rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors active:scale-[0.98]" type="button">
+<span class="material-symbols-outlined text-primary text-[20px]">photo_library</span>
+<span class="font-label-md text-label-md text-on-surface">从相册换选</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 商品信息表单 (Minimal, warm, intuitive) -->
+<div class="px-space-md flex flex-col gap-space-md mb-6">
+<!-- Required: Title -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1" for="productTitle">
+          商品名称
+          <span class="text-primary font-bold">*</span>
+</label>
+<span class="font-label-sm text-label-sm text-outline" id="titleCounter">14/30</span>
+</div>
+<div class="relative mt-1">
+<textarea class="w-full bg-surface-container-low rounded-xl px-space-sm py-2.5 font-body-md text-body-md text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#ffdbce] transition-all resize-none" id="productTitle" maxlength="30" placeholder="请输入清晰的商品品类与规格..." rows="2">手作粗陶日式拿铁杯 280ml</textarea>
+</div>
+</div>
+<!-- Optional: Selling Points -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">商品卖点</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(选填，最多3条)</span>
+</div>
+<button class="flex items-center gap-0.5 text-primary hover:opacity-80 transition-opacity active:scale-95" id="btnAddFeature" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span class="font-label-md text-label-md">增加一条</span>
+</button>
+</div>
+<p class="font-label-sm text-label-sm text-outline">将精炼融入AI海报文案排版中，便于买家一眼心动</p>
+<div class="flex flex-col gap-space-xs mt-1" id="featureList">
+<!-- Feature 1 -->
+<div class="flex items-center gap-space-xs bg-surface-container-low rounded-xl px-space-sm py-2 group focus-within:bg-surface-container-lowest focus-within:shadow-[0_0_0_2px_#ffdbce] transition-all">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+<input class="flex-1 bg-transparent font-body-sm text-body-sm text-on-surface focus:outline-none" placeholder="填写吸引力卖点..." type="text" value="景德镇原矿陶土，手工拉坯"/>
+<button aria-label="删除此条" class="btn-delete-feature text-on-surface-variant/60 hover:text-error transition-colors p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Feature 2 -->
+<div class="flex items-center gap-space-xs bg-surface-container-low rounded-xl px-space-sm py-2 group focus-within:bg-surface-container-lowest focus-within:shadow-[0_0_0_2px_#ffdbce] transition-all">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+<input class="flex-1 bg-transparent font-body-sm text-body-sm text-on-surface focus:outline-none" placeholder="填写吸引力卖点..." type="text" value="高温色釉，握感温润厚实"/>
+<button aria-label="删除此条" class="btn-delete-feature text-on-surface-variant/60 hover:text-error transition-colors p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Feature 3 -->
+<div class="flex items-center gap-space-xs bg-surface-container-low rounded-xl px-space-sm py-2 group focus-within:bg-surface-container-lowest focus-within:shadow-[0_0_0_2px_#ffdbce] transition-all">
+<span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+<input class="flex-1 bg-transparent font-body-sm text-body-sm text-on-surface focus:outline-none" placeholder="填写吸引力卖点..." type="text" value="微波炉/洗碗机适用"/>
+<button aria-label="删除此条" class="btn-delete-feature text-on-surface-variant/60 hover:text-error transition-colors p-1" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Optional: Display Price -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-on-surface flex items-center gap-1.5" for="priceInput">
+          展示价格
+          <span class="font-label-sm text-label-sm text-on-surface-variant font-normal">(选填)</span>
+</label>
+<span class="font-label-sm text-label-sm text-outline">留空则不在图片中展示价格</span>
+</div>
+<div class="relative flex items-center mt-1">
+<span class="absolute left-3.5 font-headline-sm text-headline-sm text-primary font-bold">¥</span>
+<input class="w-full bg-surface-container-low rounded-xl pl-8 pr-space-md py-3 font-headline-sm text-headline-sm text-on-surface focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_#ffdbce] transition-all" id="priceInput" placeholder="0.00" type="text" value="89.00"/>
+<button aria-label="清空价格" class="absolute right-3 text-outline hover:text-on-surface transition-colors p-1" onclick="document.getElementById('priceInput').value=''" type="button">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</button>
+</div>
+</div>
+</div>
+<!-- 底部固定操作栏 -->
+<div class="fixed bottom-16 inset-x-0 z-40 bg-surface/95 backdrop-blur-xl px-space-md py-3 shadow-[0_-4px_16px_rgba(30,41,59,0.05)]">
+<div class="max-w-md mx-auto w-full flex items-center gap-space-sm">
+<button class="w-full h-12 bg-primary text-on-primary rounded-xl font-label-lg text-label-lg flex items-center justify-center gap-space-xs shadow-[0_4px_14px_rgba(163,57,0,0.25)] hover:bg-primary-container active:scale-[0.98] transition-all" id="btnNextStep" type="button">
+<span>下一步，选模板</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Title Character Count Monitor
+    const titleInput = document.getElementById('productTitle');
+    const titleCounter = document.getElementById('titleCounter');
+
+    if (titleInput && titleCounter) {
+      titleInput.addEventListener('input', (e) => {
+        const len = e.target.value.length;
+        titleCounter.textContent = `${len}/30`;
+      });
+    }
+
+    // Feature delete interactions
+    const bindFeatureDeletes = () => {
+      const deleteButtons = document.querySelectorAll('.btn-delete-feature');
+      deleteButtons.forEach(btn => {
+        btn.onclick = function() {
+          const row = this.closest('div');
+          if (row) {
+            row.remove();
+          }
+        };
+      });
+    };
+    bindFeatureDeletes();
+
+    // Feature add interaction (max 3)
+    const btnAddFeature = document.getElementById('btnAddFeature');
+    const featureList = document.getElementById('featureList');
+
+    if (btnAddFeature && featureList) {
+      btnAddFeature.addEventListener('click', () => {
+        const currentItems = featureList.querySelectorAll('.btn-delete-feature').length;
+        if (currentItems >= 3) {
+          alert('最多添加 3 条核心卖点');
+          return;
+        }
+
+        const newRow = document.createElement('div');
+        newRow.className = 'flex items-center gap-space-xs bg-surface-container-low rounded-xl px-space-sm py-2 group focus-within:bg-surface-container-lowest focus-within:shadow-[0_0_0_2px_#ffdbce] transition-all';
+        newRow.innerHTML = `
+          <span class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></span>
+          <input
+            type="text"
+            placeholder="填写吸引力卖点..."
+            class="flex-1 bg-transparent font-body-sm text-body-sm text-on-surface focus:outline-none"
+          />
+          <button type="button" class="btn-delete-feature text-on-surface-variant/60 hover:text-error transition-colors p-1" aria-label="删除此条">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        `;
+        featureList.appendChild(newRow);
+        bindFeatureDeletes();
+      });
+    }
+
+    // Replace photo feedback
+    const btnReplacePhoto = document.getElementById('btnReplacePhoto');
+    if (btnReplacePhoto) {
+      btnReplacePhoto.addEventListener('click', () => {
+        const img = document.getElementById('previewImage');
+        if (img) {
+          img.style.opacity = '0.5';
+          setTimeout(() => {
+            img.style.opacity = '1';
+          }, 300);
+        }
+      });
+    }
+
+    // Remove photo feedback
+    const btnRemovePhoto = document.getElementById('btnRemovePhoto');
+    if (btnRemovePhoto) {
+      btnRemovePhoto.addEventListener('click', () => {
+        if (confirm('确定要清除当前照片重新上传吗？')) {
+          const img = document.getElementById('previewImage');
+          if (img) {
+            img.parentElement.innerHTML = `
+              <div class="flex flex-col items-center justify-center p-8 text-on-surface-variant cursor-pointer">
+                <span class="material-symbols-outlined text-[48px] text-primary mb-2">add_photo_alternate</span>
+                <span class="font-headline-sm text-headline-sm text-on-surface">点击上传商品主图</span>
+                <span class="font-body-sm text-body-sm text-outline mt-1">支持 JPG / PNG，建议居中饱满</span>
+              </div>
+            `;
+          }
+        }
+      });
+    }
+
+    // Next step navigation feedback
+    const btnNextStep = document.getElementById('btnNextStep');
+    if (btnNextStep) {
+      btnNextStep.addEventListener('click', () => {
+        const titleVal = titleInput ? titleInput.value.trim() : '';
+        if (!titleVal) {
+          alert('请先输入商品名称');
+          if (titleInput) titleInput.focus();
+          return;
+        }
+        // Proceed to template gallery step
+        const templateTab = document.querySelector('nav a[data-path="gallery-templates"]');
+        if (templateTab) {
+          templateTab.click();
+        }
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-4px_20px_rgba(30,41,59,0.04)]" data-active-classes="text-primary font-label-md"><div class="flex justify-around items-center h-16 px-space-sm"><a aria-current="page" class="flex flex-col items-center justify-center gap-space-2xs min-w-[56px] min-h-[44px] transition-colors text-primary font-label-md" data-path="workbench" href="#"><span class="material-symbols-outlined text-[24px]">auto_fix_high</span><span class="font-label-sm text-label-sm">工作台</span></a><a class="flex flex-col items-center justify-center gap-space-2xs min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="gallery-templates" href="#"><span class="material-symbols-outlined text-[24px]">dashboard</span><span class="font-label-sm text-label-sm">模版库</span></a><a class="flex flex-col items-center justify-center gap-space-2xs min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="batch-history" href="#"><span class="material-symbols-outlined text-[24px]">photo_library</span><span class="font-label-sm text-label-sm">成片箱</span></a><a class="flex flex-col items-center justify-center gap-space-2xs min-w-[56px] min-h-[44px] text-on-surface-variant hover:text-on-surface transition-colors" data-path="merchant-profile" href="#"><span class="material-symbols-outlined text-[24px]">storefront</span><span class="font-label-sm text-label-sm">店铺</span></a></div></nav></body></html>

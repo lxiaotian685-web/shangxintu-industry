@@ -1,0 +1,30 @@
+# Dependencies and secrets
+node_modules/
+backend/.env
+backend/.env.*
+!backend/.env.example
+
+# Runtime data and user uploads
+backend/data/
+backend/uploads/
+*.log
+
+# WeChat developer local settings
+frontend/project.private.config.json
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.obsidian/
+
+# Local planning and private working memory
+PROJECT_MEMORY.md
+task_plan.md
+findings.md
+progress.md
+.planning/
+.plan-attestation
+AGENTS.md
+

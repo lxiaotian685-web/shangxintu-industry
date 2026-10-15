@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed": "#ffdbce", "on-surface": "#111c2d", "on-tertiary": "#ffffff", "on-error": "#ffffff", "primary-container": "#cc4900", "surface-tint": "#a73a00", "surface-container": "#e7eeff", "secondary-fixed": "#e3dfff", "surface-container-lowest": "#ffffff", "on-primary-fixed-variant": "#7f2b00", "secondary-fixed-dim": "#c3c0ff", "surface-container-high": "#dee8ff", "tertiary-container": "#00855b", "error-container": "#ffdad6", "secondary-container": "#6860ef", "on-primary-container": "#fffbff", "primary": "#a33900", "on-primary": "#ffffff", "outline-variant": "#e2bfb2", "surface-container-low": "#f0f3ff", "tertiary-fixed": "#6ffbbe", "primary-fixed-dim": "#ffb599", "on-tertiary-fixed": "#002113", "tertiary-fixed-dim": "#4edea3", "background": "#f9f9ff", "on-tertiary-fixed-variant": "#005236", "on-secondary": "#ffffff", "on-secondary-container": "#fffbff", "surface-variant": "#d8e3fb", "on-surface-variant": "#5a4138", "surface-dim": "#cfdaf2", "secondary": "#4e45d5", "outline": "#8e7166", "on-tertiary-container": "#f5fff6", "surface-bright": "#f9f9ff", "error": "#ba1a1a", "on-secondary-fixed-variant": "#372abf", "inverse-surface": "#263143", "on-error-container": "#93000a", "on-primary-fixed": "#370e00", "surface": "#f9f9ff", "on-secondary-fixed": "#100069", "surface-container-highest": "#d8e3fb", "on-background": "#111c2d", "inverse-on-surface": "#ecf1ff", "tertiary": "#006947", "inverse-primary": "#ffb599" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "space-2xl": "2rem", "space-3xl": "2.5rem", "wechat-capsule-safe-top": "5.5rem", "space-sm": "0.75rem", "space-md": "1rem", "wechat-home-indicator-safe-bottom": "2.125rem", "space-xs": "0.5rem", "space-xl": "1.5rem", "space-lg": "1.25rem", "space-2xs": "0.25rem" }, "fontFamily": { "body-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"], "headline-sm": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "headline-md": ["Plus Jakarta Sans"], "headline-xl": ["Plus Jakarta Sans"], "headline-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"] }, "fontSize": { "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-sm": ["16px", { "lineHeight": "22px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "500" }], "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "headline-xl": ["28px", { "lineHeight": "36px", "fontWeight": "700" }], "headline-lg": ["22px", { "lineHeight": "28px", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;min-height:100vh;}body{overscroll-behavior-y:none;background-color:#f9f9ff;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,20px);}.pt-safe{padding-top:env(safe-area-inset-top,44px);}}::-webkit-scrollbar{display:none;}</style></head><body class="bg-surface font-body-md text-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)] pt-safe"><div class="h-16 px-space-sm flex items-center justify-between gap-space-xs"><div class="flex items-center gap-space-2xs min-w-0 flex-1"><button aria-label="返回" class="w-11 h-11 flex items-center justify-center text-on-surface hover:text-primary transition-colors" onclick="history.back()" type="button"><span class="material-symbols-outlined text-[22px]">arrow_back_ios_new</span></button><h1 class="font-headline-md text-headline-md text-on-surface truncate tracking-tight">Export Preview</h1></div><div class="flex items-center gap-space-xs shrink-0"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex items-center justify-center shrink-0 bg-surface-container-high/60 backdrop-blur-md rounded-full px-space-xs py-[5px] gap-space-2xs"><button aria-label="更多操作" class="w-8 h-7 flex items-center justify-center text-on-surface hover:opacity-80 transition-opacity" type="button"><span class="material-symbols-outlined text-[18px]">more_horiz</span></button><div class="w-[1px] h-3.5 bg-outline-variant/30"></div><button aria-label="关闭" class="w-8 h-7 flex items-center justify-center text-on-surface hover:opacity-80 transition-opacity" type="button"><span class="material-symbols-outlined text-[16px]">radio_button_checked</span></button></div></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 bg-surface"><div class="flex flex-col w-full pb-36">
+<!-- Top Utility Ribbon & Visual Compare CTA -->
+<section class="px-space-md pt-space-xs pb-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-2xs">
+<span class="inline-flex items-center justify-center w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-sm text-label-sm text-tertiary">AI 质感渲染完成 · 4K 高清</span>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface shadow-sm active:scale-95 transition-transform" id="compareBtn" type="button">
+<span class="material-symbols-outlined text-[16px] text-primary">compare</span>
+<span class="font-label-md text-label-md">长按对比原图</span>
+</button>
+</section>
+<!-- Core Canvas / Showcase Area (3:4 Editorial Canvas) -->
+<section class="px-space-md relative">
+<div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-md bg-surface-container select-none touch-none" id="mainCanvas">
+<!-- Generated Studio Product Image -->
+<img alt="成品图片" class="w-full h-full object-cover transition-opacity duration-300" data-alt="Artisanal ceramic Japanese rustic latte cup placed on a natural warm oak tabletop in soft morning window lighting, subtle steam rising, minimalist ceramic studio background, earthy terracotta and warm linen tones, authentic handmade glaze texture, macro photography depth of field" id="currentImage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoPEzcHVthZLQ-1ldJL0nDpYIfP-06NWJnNt5dlEnaka1rRybL48_SdigGi7Wd6MG_hRZgdEzW74t6BKPQCMOQnBnzfXF6Bn78ZJDWNTxBkMrrOAb2AsacvfYIUu6HFRglsRi5VqxhwwxEBG2Mqko0IILU-ZZVoRQOe_ynzQ19J8_DZBTH905nmp-AWfh3WXhLD2ZZ2iLy8Cm6X2YT8T9AWUwF1VZMVWws6iA7Wh3HqYDoVXsZOp36"/>
+<!-- Original Source Image (Hidden by default, shown during compare) -->
+<div class="absolute inset-0 opacity-0 pointer-events-none transition-opacity duration-200" id="originalLayer">
+<img alt="原始拍摄图" class="w-full h-full object-cover" data-alt="Raw phone snapshot of an unglazed ceramic coffee cup sitting on a plain cluttered workshop table under flat fluorescent lighting, realistic mobile photo capture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC0C6MZKVergsSkkTD_2Z6FPYHBlpaPic5nSbISCptZtrnP97JeFGGZLus5AzxKOy0AsRC56T5PbsqktJ6P5DfJQbqzXC9bWP1mPMq9u91w_AeHYP-uzaf0PUxye7yGF0qkvn1P9jvaFwKYR7bEPTQ5Zk1ppe7KEwW232zsAcPq2Fi_I9rxTqU2uxjC625qWGCkmQ779oJ15i_C08IDxX4amY8HlwFi8xvRboPyp5BdR0upsyC0pph"/>
+<div class="absolute top-3 left-3 bg-inverse-surface/80 backdrop-blur-md px-2.5 py-1 rounded-full text-inverse-on-surface font-label-sm text-label-sm">
+          原始未处理实拍
+        </div>
+</div>
+<!-- Live Interactive Editorial Layout Overlay -->
+<div class="absolute inset-0 p-space-md flex flex-col justify-between pointer-events-none transition-all duration-300" id="textOverlayContainer">
+<!-- Top Editorial Brand Stamp & Title -->
+<div class="self-end max-w-[70%] bg-surface/80 backdrop-blur-md p-3 rounded-lg shadow-sm" id="topTextCard">
+<div class="flex items-center gap-1.5 mb-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+<span class="font-label-sm text-label-sm tracking-wider text-primary uppercase">Kura Studio</span>
+</div>
+<h2 class="font-headline-sm text-headline-sm text-on-surface leading-tight" id="mainProductTitle">
+            手作粗陶日式拿铁杯
+          </h2>
+</div>
+<!-- Bottom Price & Artisan Spec Pill -->
+<div class="self-start max-w-[85%] bg-surface/85 backdrop-blur-md px-3.5 py-2 rounded-lg shadow-sm" id="bottomTextCard">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">景德镇原矿 · 手工拉坯</span>
+<span class="w-1 h-3 rounded-full bg-outline-variant"></span>
+<span class="font-headline-md text-headline-md text-primary font-bold">¥89</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-0.5" id="featureTagline">温润触感 · 双层厚胎保温</p>
+</div>
+</div>
+<!-- Watermark Badge -->
+<div class="absolute bottom-3 right-3 bg-surface-container-lowest/70 backdrop-blur-sm px-2 py-0.5 rounded text-on-surface font-label-sm text-label-sm opacity-80">
+        Studio AI · 1080×1350
+      </div>
+</div>
+</section>
+<!-- Thumbnail Selection Strip -->
+<section class="mt-space-sm px-space-md">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface">成套发布图集 (3)</span>
+<span class="font-label-sm text-label-sm text-outline">已匹配微店排版规范</span>
+</div>
+<div class="grid grid-cols-3 gap-space-xs">
+<!-- Thumbnail 1 (Active) -->
+<button class="flex flex-col bg-surface-container-lowest p-1 rounded-xl shadow-sm bg-primary-fixed/40 transition-all text-left" id="thumb-0" onclick="switchVariant(0)" type="button">
+<div class="relative w-full aspect-square rounded-lg overflow-hidden bg-surface-container">
+<img alt="主图" class="w-full h-full object-cover" data-alt="Close up aesthetic shot of ceramic cup on sunlit table top, studio render" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNQmvRf7XktadqbHzzi1bsl9RyrMWEHmKADnRn0vCI15Q2NdX3U1ct3ky3cnbyP6URU_7rjqGG07pmnXhkuaCNGzKxQO76PX9mTY420Wq607ay4HB7FPVQEaIYwv5j7pObtQ0eopIYG01xAIbgjGaAgvYPSAMhcBF3OVd_Ck4YIITY_B8OeQP8bB7s16V6eRV-kAxbyLCF9yzuFQvUy62DgCc4DM0nkqtFZ1_OhXDiOoh7pxfReIbk"/>
+<span class="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-primary text-on-primary font-label-sm text-label-sm">
+            主图
+          </span>
+</div>
+<div class="p-1">
+<p class="font-label-sm text-label-sm font-semibold text-primary truncate">标准器物视觉</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-[10px]">自然光影</p>
+</div>
+</button>
+<!-- Thumbnail 2 -->
+<button class="flex flex-col bg-surface-container-lowest p-1 rounded-xl shadow-sm transition-all text-left opacity-80" id="thumb-1" onclick="switchVariant(1)" type="button">
+<div class="relative w-full aspect-square rounded-lg overflow-hidden bg-surface-container">
+<img alt="卖点图" class="w-full h-full object-cover" data-alt="Hand holding handcrafted clay cup showing textured matte surface and ergonomic grip detail, warm mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIuhjBCOMXzlvmNu5YDij1bABT_QHKCNcQl_iAkOeccCI1e4UwsVt52AJoh9i8-nU_T1XOxUaEcjSbz7PmSlXELJkVhINyZlCu67VqLsHoE-cgniQWJFR9BgXNS82l38FczJSgPVRvdipoSi4KtxrtgFnIblhcrVtN3N2-bsEGHP-hMoB4W5eO7pGBsSQ1wsUvfJySc2ILt48tyad97bOOUyFaGLYdUeewLY-oFwRt9UGf5jrJTrmX"/>
+<span class="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-inverse-surface/80 text-inverse-on-surface font-label-sm text-label-sm">
+            卖点
+          </span>
+</div>
+<div class="p-1">
+<p class="font-label-sm text-label-sm text-on-surface truncate">握持与工艺细节</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-[10px]">标尺寸容量</p>
+</div>
+</button>
+<!-- Thumbnail 3 -->
+<button class="flex flex-col bg-surface-container-lowest p-1 rounded-xl shadow-sm transition-all text-left opacity-80" id="thumb-2" onclick="switchVariant(2)" type="button">
+<div class="relative w-full aspect-square rounded-lg overflow-hidden bg-surface-container">
+<img alt="促销图" class="w-full h-full object-cover" data-alt="Studio styled table setting with coffee beans, ceramic cup, and gentle warm morning shadows with promotional layout vibe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_Kcm-HEMd51XJ5P9ELRGt0qbV6Xmfv7ZjWbzON4egFPyJWo_VSADOwAy3z1tpIngSNSQkUZSTQpHWAl-QS8qHbv-Ogw6xmecz0dKZ2NvwJKyCiVVlago3OsuzGIE_hyLBXYuwFAWtlUNMVrQp_w0e6YH53zINxVdijFOtDX5qFHQ0cs4Kow2_5iDuQWw6rW3PgFu6g7aAMledofHn-7nSSWeeHpWvjg0gBGUnp6y2R6XUmL22yIs9"/>
+<span class="absolute top-1 left-1 px-1.5 py-0.5 rounded bg-tertiary text-on-tertiary font-label-sm text-label-sm">
+            上新
+          </span>
+</div>
+<div class="p-1">
+<p class="font-label-sm text-label-sm text-on-surface truncate">上新限时特惠</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-[10px]">带价格标签</p>
+</div>
+</button>
+</div>
+</section>
+<!-- Lightweight Quick Micro-Edit Toolbar -->
+<section class="mt-space-md px-space-md">
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">tune</span>
+          轻量快捷微调
+        </span>
+<span class="font-label-sm text-label-sm text-outline">点按即时生效</span>
+</div>
+<!-- Quick Action Capsules -->
+<div class="grid grid-cols-3 gap-space-xs">
+<!-- 1. Text Edit -->
+<button class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-colors" onclick="openTextModal()" type="button">
+<div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-primary text-[18px]">edit_note</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">修改文案</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-[10px]">改标题标价</span>
+</button>
+<!-- 2. Text Alignment Shift -->
+<button class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-colors" onclick="togglePosition()" type="button">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-on-surface text-[18px]" id="posIcon">vertical_align_bottom</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">调整位置</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-[10px]" id="posLabel">居下排版</span>
+</button>
+<!-- 3. Ambient Mood Shift -->
+<button class="flex flex-col items-center justify-center p-2 rounded-lg bg-surface-container-low hover:bg-surface-container-high transition-colors" onclick="cycleMood()" type="button">
+<div class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center mb-1">
+<span class="material-symbols-outlined text-tertiary text-[18px]">wb_sunny</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">换背景调性</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant text-[10px]" id="moodLabel">晨曦柔和光</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Regeneration Action & Safety Assurance Box -->
+<section class="mt-space-sm px-space-md space-y-space-xs">
+<!-- Inline Retry Link -->
+<div class="flex items-center justify-between px-space-xs">
+<button class="inline-flex items-center gap-1.5 py-1 text-primary active:opacity-75 transition-opacity" onclick="simulateReroll()" type="button">
+<span class="material-symbols-outlined text-[18px] animate-none" id="rerollSpinner">refresh</span>
+<span class="font-label-md text-label-md font-semibold">重新生成当前单张</span>
+</button>
+<div class="flex items-center gap-1 text-outline">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+<span class="font-label-sm text-label-sm">不消耗点数额度</span>
+</div>
+</div>
+<!-- Friendly Verification Notice -->
+<div class="bg-primary-fixed/30 rounded-xl p-space-sm flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary text-[18px] mt-0.5">lightbulb</span>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-primary-fixed font-medium">核对提示</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          保存前请确认杯型轮廓、釉色手作感及价格标签准确无误，直接可作为小程序主图发布。
+        </p>
+</div>
+</div>
+</section>
+<!-- Prototype Delight Showcase: Saved Toast & Album Permission Modal Simulation (Design Spec Area) -->
+<section class="mt-space-md px-space-md">
+<div class="bg-surface-container-low rounded-xl p-space-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">交互与反馈状态预览</span>
+<span class="font-label-sm text-label-sm text-primary">点击可测试触发</span>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-sm" onclick="triggerToast()" type="button">
+          查看「保存成功」提示
+        </button>
+<button class="flex-1 py-1.5 rounded-lg bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-sm" onclick="triggerPermissionModal()" type="button">
+          模拟「相册授权」弹窗
+        </button>
+</div>
+</div>
+</section>
+<!-- Interactive Modal 1: Quick Text Edit -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm hidden items-end justify-center p-0 transition-opacity" id="textModal">
+<div class="w-full bg-surface rounded-t-2xl p-space-lg shadow-xl animate-in slide-in-from-bottom max-w-lg">
+<div class="flex items-center justify-between mb-space-md">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">快速修改商品文案</h3>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline" onclick="closeTextModal()" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="space-y-3 mb-space-lg">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">商品主名称</label>
+<input class="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-lowest text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-high transition-colors" id="inputTitle" type="text" value="手作粗陶日式拿铁杯"/>
+</div>
+<div class="grid grid-cols-2 gap-2">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">售价标价</label>
+<input class="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-lowest text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-high transition-colors" id="inputPrice" type="text" value="¥89"/>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">工艺特质短标签</label>
+<input class="w-full px-3.5 py-2.5 rounded-xl bg-surface-container-lowest text-on-surface font-body-md text-body-md outline-none focus:bg-surface-container-high transition-colors" id="inputSub" type="text" value="景德镇原矿 · 手工拉坯"/>
+</div>
+</div>
+</div>
+<button class="w-full py-3 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md active:scale-98 transition-transform" onclick="saveTextChanges()" type="button">
+        应用文案变更
+      </button>
+</div>
+</div>
+<!-- Interactive Modal 2: WeChat Album Permission Mock Dialog -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/50 backdrop-blur-sm hidden items-center justify-center p-space-md" id="permissionModal">
+<div class="w-full max-w-xs bg-surface rounded-2xl p-space-lg shadow-2xl text-center">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center mx-auto mb-space-sm">
+<span class="material-symbols-outlined text-primary text-[28px]">photo_library</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-1">需要相册写入权限</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-lg">
+        用于将渲染后的 3 张高清商品图保存至系统相册，方便直接转发朋友圈或同步微店。
+      </p>
+<div class="space-y-2">
+<button class="w-full py-2.5 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg" onclick="closePermissionModal(true)" type="button">
+          去系统设置中允许
+        </button>
+<button class="w-full py-2.5 rounded-xl bg-surface-container text-on-surface font-label-md text-label-md" onclick="closePermissionModal(false)" type="button">
+          稍后处理
+        </button>
+</div>
+</div>
+</div>
+<!-- Save Toast Notification Feedback -->
+<div class="fixed top-20 inset-x-0 mx-auto w-max z-50 bg-inverse-surface/90 backdrop-blur-md text-inverse-on-surface px-4 py-2.5 rounded-full shadow-xl flex items-center gap-2 -translate-y-8 opacity-0 pointer-events-none transition-all duration-300" id="saveToast">
+<span class="material-symbols-outlined text-tertiary-fixed text-[20px]">check_circle</span>
+<span class="font-label-md text-label-md">已将 3 张高清图保存至手机相册</span>
+</div>
+<!-- Fixed Bottom Operations Bar -->
+<footer class="fixed bottom-0 inset-x-0 z-40 bg-surface/90 backdrop-blur-lg pb-safe">
+<div class="px-space-md py-space-sm flex items-center gap-space-xs">
+<!-- Secondary Action -->
+<button class="w-[35%] h-12 rounded-xl bg-surface-container-high text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-1 active:bg-surface-dim transition-colors" onclick="history.back()" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>继续微调</span>
+</button>
+<!-- Primary Action -->
+<button class="flex-1 h-12 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow-md flex items-center justify-center gap-2 active:scale-98 transition-transform" onclick="handleBatchSave()" type="button">
+<span class="material-symbols-outlined text-[20px]">download_for_offline</span>
+<span>保存全部图片 (3张)</span>
+</button>
+</div>
+</footer>
+</div>
+<script>
+  // Variant Selection State
+  const variants = [
+    { title: '手作粗陶日式拿铁杯', sub: '景德镇原矿 · 手工拉坯', price: '¥89', feature: '温润触感 · 双层厚胎保温' },
+    { title: '器物握持与容量详解', sub: '约 280ml 宽口拉花型', price: '¥89', feature: '手工打磨弧形把手 · 握感轻盈' },
+    { title: '新窑初出 · 赏味特辑', sub: '首批限量 20 件现货', price: '限时 ¥89', feature: '随单赠原木隔热杯垫' }
+  ];
+
+  let currentVariantIndex = 0;
+  let currentPositionIndex = 0; // 0: standard split, 1: bottom clustered, 2: top stacked
+  const moods = ['晨曦柔和光', '日落暖调', '极简无影棚'];
+  let currentMoodIndex = 0;
+
+  function switchVariant(index) {
+    currentVariantIndex = index;
+    // Update thumbnail highlights
+    for (let i = 0; i < 3; i++) {
+      const thumb = document.getElementById(`thumb-${i}`);
+      if (i === index) {
+        thumb.classList.add('bg-primary-fixed/40');
+        thumb.classList.remove('opacity-80');
+      } else {
+        thumb.classList.remove('bg-primary-fixed/40');
+        thumb.classList.add('opacity-80');
+      }
+    }
+    // Update overlay text
+    const v = variants[index];
+    document.getElementById('mainProductTitle').textContent = v.title;
+    document.getElementById('featureTagline').textContent = v.feature;
+    const bottomCard = document.getElementById('bottomTextCard');
+    bottomCard.querySelector('span:first-child').textContent = v.sub;
+    bottomCard.querySelector('span:last-child').textContent = v.price;
+  }
+
+  // Compare Original Image on Hold / Click
+  const compareBtn = document.getElementById('compareBtn');
+  const originalLayer = document.getElementById('originalLayer');
+
+  const showOriginal = () => { originalLayer.style.opacity = '1'; };
+  const hideOriginal = () => { originalLayer.style.opacity = '0'; };
+
+  compareBtn.addEventListener('mousedown', showOriginal);
+  compareBtn.addEventListener('mouseup', hideOriginal);
+  compareBtn.addEventListener('mouseleave', hideOriginal);
+  compareBtn.addEventListener('touchstart', (e) => { e.preventDefault(); showOriginal(); });
+  compareBtn.addEventListener('touchend', hideOriginal);
+
+  // Position Toggle
+  function togglePosition() {
+    currentPositionIndex = (currentPositionIndex + 1) % 3;
+    const container = document.getElementById('textOverlayContainer');
+    const posIcon = document.getElementById('posIcon');
+    const posLabel = document.getElementById('posLabel');
+
+    if (currentPositionIndex === 0) {
+      container.className = "absolute inset-0 p-space-md flex flex-col justify-between pointer-events-none transition-all duration-300";
+      posIcon.textContent = "vertical_align_bottom";
+      posLabel.textContent = "上下分散";
+    } else if (currentPositionIndex === 1) {
+      container.className = "absolute inset-0 p-space-md flex flex-col justify-end gap-2 pointer-events-none transition-all duration-300";
+      posIcon.textContent = "vertical_align_center";
+      posLabel.textContent = "居下聚拢";
+    } else {
+      container.className = "absolute inset-0 p-space-md flex flex-col justify-start gap-2 pointer-events-none transition-all duration-300";
+      posIcon.textContent = "vertical_align_top";
+      posLabel.textContent = "居上陈列";
+    }
+  }
+
+  // Cycle Ambient Lighting Mood
+  function cycleMood() {
+    currentMoodIndex = (currentMoodIndex + 1) % moods.length;
+    document.getElementById('moodLabel').textContent = moods[currentMoodIndex];
+    const img = document.getElementById('currentImage');
+    img.style.filter = currentMoodIndex === 1 ? 'sepia(0.18) saturate(1.1)' : (currentMoodIndex === 2 ? 'contrast(1.05) brightness(1.02)' : 'none');
+  }
+
+  // Quick Text Modal Logic
+  function openTextModal() {
+    const modal = document.getElementById('textModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.getElementById('inputTitle').value = document.getElementById('mainProductTitle').textContent.trim();
+  }
+
+  function closeTextModal() {
+    const modal = document.getElementById('textModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+
+  function saveTextChanges() {
+    const newTitle = document.getElementById('inputTitle').value;
+    const newPrice = document.getElementById('inputPrice').value;
+    const newSub = document.getElementById('inputSub').value;
+
+    if (newTitle) document.getElementById('mainProductTitle').textContent = newTitle;
+    const bottomCard = document.getElementById('bottomTextCard');
+    if (newPrice) bottomCard.querySelector('span:last-child').textContent = newPrice;
+    if (newSub) bottomCard.querySelector('span:first-child').textContent = newSub;
+
+    closeTextModal();
+  }
+
+  // Simulate Image Reroll (Free current item refresh)
+  function simulateReroll() {
+    const spinner = document.getElementById('rerollSpinner');
+    const img = document.getElementById('currentImage');
+    spinner.classList.add('animate-spin');
+    img.style.opacity = '0.5';
+
+    setTimeout(() => {
+      spinner.classList.remove('animate-spin');
+      img.style.opacity = '1';
+    }, 600);
+  }
+
+  // Toast System
+  function triggerToast() {
+    const toast = document.getElementById('saveToast');
+    toast.classList.remove('opacity-0', '-translate-y-8', 'pointer-events-none');
+    toast.classList.add('opacity-100', 'translate-y-0');
+
+    setTimeout(() => {
+      toast.classList.add('opacity-0', '-translate-y-8', 'pointer-events-none');
+      toast.classList.remove('opacity-100', 'translate-y-0');
+    }, 2400);
+  }
+
+  // Permission Mock System
+  function triggerPermissionModal() {
+    const modal = document.getElementById('permissionModal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+  }
+
+  function closePermissionModal(granted) {
+    const modal = document.getElementById('permissionModal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    if (granted) triggerToast();
+  }
+
+  function handleBatchSave() {
+    triggerToast();
+  }
+</script></main></body></html>

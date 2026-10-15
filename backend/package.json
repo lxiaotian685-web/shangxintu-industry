@@ -1,0 +1,8 @@
+{
+  "name": "shangxintu-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "上新图独立后端 API（教学型 MVP）",
+  "scripts": { "dev": "node --env-file-if-exists=.env --watch server.js", "start": "node --env-file-if-exists=.env server.js", "test": "node --test" },
+  "engines": { "node": ">=20.6" }
+}
