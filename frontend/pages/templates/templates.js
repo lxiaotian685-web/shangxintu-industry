@@ -12,8 +12,10 @@ const fallbackScenes = [
   { id: 'fresh', name: '清新色块', description: '明亮活泼的上新视觉' }
 ]
 Page({
-  data: { templates: fallbackTemplates, scenes: fallbackScenes, sceneId: 'studio', positions: ['top-left', 'top', 'top-right', 'left', 'center', 'right', 'bottom-left', 'bottom', 'bottom-right'], selectedId: 'warm-life', ratio: '1:1', imageScale: 1, imagePosition: 'center', processingMode: 'ai-cutout', aiAvailable: null, aiSceneAvailable: null, aiStatusText: '正在检查 AI 服务', loading: false, loadingText: '' },
+  data: { productProfile: null, templates: fallbackTemplates, scenes: fallbackScenes, sceneId: 'studio', positions: ['top-left', 'top', 'top-right', 'left', 'center', 'right', 'bottom-left', 'bottom', 'bottom-right'], selectedId: 'warm-life', ratio: '1:1', imageScale: 1, imagePosition: 'center', processingMode: 'ai-cutout', aiAvailable: null, aiSceneAvailable: null, aiStatusText: '正在检查 AI 服务', loading: false, loadingText: '' },
   onLoad() {
+    const draft = getApp().globalData.draft || localData.loadDraft()
+    if (draft) this.setData({ productProfile: { name: draft.name || '', modelNumber: draft.modelNumber || '', category: draft.category || '未分类', brandName: draft.brandName || '未填写品牌' } })
     const saved = localData.loadPreferences()
     if (saved) this.setData(saved)
     api.getTemplates().then(({ data }) => this.setData({ templates: data })).catch(() => {})
@@ -29,6 +31,7 @@ Page({
     }).catch(() => this.setData({ aiAvailable: null, aiStatusText: '无法读取 AI 状态，可使用原图模式' }))
   },
   onUnload() { this.disposed = true },
+  editProfile() { wx.navigateBack({ delta: 1 }) },
   remember(values) { this.setData(values, () => localData.savePreferences({ selectedId: this.data.selectedId, ratio: this.data.ratio, imageScale: this.data.imageScale, imagePosition: this.data.imagePosition, processingMode: this.data.processingMode, sceneId: this.data.sceneId, processingVersion: 2 })) },
   select(e) { this.remember({ selectedId: e.currentTarget.dataset.id }) },
   ratio(e) { this.remember({ ratio: e.currentTarget.dataset.ratio }) },

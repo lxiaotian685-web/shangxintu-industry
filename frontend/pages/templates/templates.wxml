@@ -1,7 +1,7 @@
 <view class="page">
   <view class="topbar"><view class="brand"><view class="brand-mark">上</view><text>选择模板</text></view><view class="capsule">第 2 步</view></view>
   <view class="stepper"><view class="step done"><view class="step-dot">✓</view><text>上传商品</text></view><view class="step active"><view class="step-dot">2</view><text>选择模板</text></view><view class="step"><view class="step-dot">3</view><text>制作图片</text></view></view>
-  <view class="selection-card card"><view class="selection-icon">▧</view><view><view class="section-title">商品已准备好</view><view class="muted">{{processingMode === 'ai-scene' ? '当前：AI 重构商业场景' : (processingMode === 'ai-cutout' ? '当前：AI 抠图后排版' : '当前：保留原图排版')}}</view></view></view>
+  <view wx:if="{{productProfile}}" class="profile-card card"><view class="profile-head"><view><view class="profile-eyebrow">当前工业品档案</view><view class="profile-name">{{productProfile.name}}</view></view><button class="profile-edit" bindtap="editProfile">修改</button></view><view class="profile-model">型号 {{productProfile.modelNumber}}</view><view class="profile-meta"><text>{{productProfile.category}}</text><text>{{productProfile.brandName}}</text></view><view class="profile-status"><view class="status-dot"></view><text>{{processingMode === 'ai-scene' ? '将使用 AI 重构商业场景' : (processingMode === 'ai-cutout' ? '将使用 AI 抠图后排版' : '将保留原图排版')}}</text></view></view>
   <view class="section-label"><view class="section-title">图片比例</view><view class="muted">按发布渠道选择</view></view>
   <view class="ratios">
     <view class="ratio-card {{ratio === '1:1' ? 'active' : ''}}" data-ratio="1:1" bindtap="ratio"><view class="ratio-shape square"></view><view><text>1:1 方图</text><text class="ratio-help">商品主图 / 朋友圈</text></view><view class="check">{{ratio === '1:1' ? '✓' : ''}}</view></view>
