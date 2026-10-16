@@ -1,11 +1,11 @@
 const localData = require('../../services/local-data')
 Page({
-  data: { imagePath: '', name: '', price: '', promotionText: '', brandName: '', brandColor: '#b53f00', brandColors: ['#b53f00', '#1f5f99', '#14705c', '#6b46a2', '#222222'], featureText: '', features: [] },
+  data: { imagePath: '', name: '', modelNumber: '', category: '机械设备', categories: ['机械设备', '电气设备', '仪器仪表', '五金工具', '工业耗材', '其他'], price: '', promotionText: '', brandName: '', brandColor: '#b53f00', brandColors: ['#b53f00', '#1f5f99', '#14705c', '#6b46a2', '#222222'], featureText: '', features: [] },
   onLoad() {
     const draft = localData.loadDraft()
-    if (draft) this.setData({ imagePath: draft.imagePath || '', name: draft.name || '', price: draft.price || '', promotionText: draft.promotionText || '', brandName: draft.brandName || '', brandColor: draft.brandColor || '#b53f00', features: Array.isArray(draft.features) ? draft.features : [] })
+    if (draft) this.setData({ imagePath: draft.imagePath || '', name: draft.name || '', modelNumber: draft.modelNumber || '', category: draft.category || '机械设备', price: draft.price || '', promotionText: draft.promotionText || '', brandName: draft.brandName || '', brandColor: draft.brandColor || '#b53f00', features: Array.isArray(draft.features) ? draft.features : [] })
   },
-  persist() { localData.saveDraft({ imagePath: this.data.imagePath, name: this.data.name, price: this.data.price, promotionText: this.data.promotionText, brandName: this.data.brandName, brandColor: this.data.brandColor, features: this.data.features }) },
+  persist() { localData.saveDraft({ imagePath: this.data.imagePath, name: this.data.name, modelNumber: this.data.modelNumber, category: this.data.category, price: this.data.price, promotionText: this.data.promotionText, brandName: this.data.brandName, brandColor: this.data.brandColor, features: this.data.features }) },
   chooseImage() {
     wx.chooseMedia({ count: 1, mediaType: ['image'], sourceType: ['album', 'camera'], success: ({ tempFiles }) => {
       if (!tempFiles.length) return
@@ -14,6 +14,8 @@ Page({
     }, fail: error => { if (!/cancel/i.test(error.errMsg || '')) wx.showToast({ title: '选图失败，请检查相机或相册权限', icon: 'none' }) } })
   },
   onName(e) { this.setData({ name: e.detail.value }, () => this.persist()) },
+  onModelNumber(e) { this.setData({ modelNumber: e.detail.value }, () => this.persist()) },
+  onCategory(e) { this.setData({ category: this.data.categories[Number(e.detail.value)] }, () => this.persist()) },
   onPrice(e) { this.setData({ price: e.detail.value }, () => this.persist()) },
   onPromotion(e) { this.setData({ promotionText: e.detail.value }, () => this.persist()) },
   onBrandName(e) { this.setData({ brandName: e.detail.value }, () => this.persist()) },
@@ -26,13 +28,13 @@ Page({
   },
   removeFeature(e) { this.setData({ features: this.data.features.filter((_, index) => index !== Number(e.currentTarget.dataset.index)) }, () => this.persist()) },
   next() {
-    if (!this.data.imagePath || !this.data.name.trim()) return wx.showToast({ title: '请上传图片并填写名称', icon: 'none' })
+    if (!this.data.imagePath || !this.data.name.trim() || !this.data.modelNumber.trim()) return wx.showToast({ title: '请上传图片并填写名称和型号', icon: 'none' })
     if (this.data.price.trim() && !/^\d{1,8}(\.\d{1,2})?$/.test(this.data.price.trim())) return wx.showToast({ title: '价格最多八位整数和两位小数', icon: 'none' })
     if (this.data.featureText.trim()) {
       if (this.data.features.length >= 3) return wx.showToast({ title: '最多三个卖点，请清空未添加内容', icon: 'none' })
       this.addFeature()
     }
-    getApp().globalData.draft = { imagePath: this.data.imagePath, name: this.data.name.trim(), price: this.data.price.trim(), promotionText: this.data.promotionText.trim(), brandName: this.data.brandName.trim(), brandColor: this.data.brandColor, features: this.data.features }
+    getApp().globalData.draft = { imagePath: this.data.imagePath, name: this.data.name.trim(), modelNumber: this.data.modelNumber.trim(), category: this.data.category, price: this.data.price.trim(), promotionText: this.data.promotionText.trim(), brandName: this.data.brandName.trim(), brandColor: this.data.brandColor, features: this.data.features }
     localData.saveDraft(getApp().globalData.draft)
     wx.navigateTo({ url: '/pages/templates/templates' })
   }

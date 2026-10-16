@@ -51,6 +51,8 @@ async function addWork({ draft, generation, outputs }) {
   const work = {
     id: `${Date.now()}-${Math.random().toString(16).slice(2)}`,
     name: draft.name,
+    modelNumber: draft.modelNumber || '',
+    category: draft.category || '',
     price: draft.price,
     features: draft.features,
     promotionText: draft.promotionText || '',

@@ -11,7 +11,7 @@ Page({
   reuse(e) {
     const work = this.data.works.find(item => item.id === e.currentTarget.dataset.id)
     if (!work || !work.sourcePath) return wx.showToast({ title: '旧作品没有保留原图，请重新选图', icon: 'none' })
-    const draft = { imagePath: work.sourcePath, name: work.name, price: work.price || '', promotionText: work.promotionText || '', brandName: work.brandName || '', brandColor: work.brandColor || '#b53f00', features: work.features || [] }
+    const draft = { imagePath: work.sourcePath, name: work.name, modelNumber: work.modelNumber || '', category: work.category || '机械设备', price: work.price || '', promotionText: work.promotionText || '', brandName: work.brandName || '', brandColor: work.brandColor || '#b53f00', features: work.features || [] }
     localData.saveDraft(draft)
     getApp().globalData.draft = draft
     localData.savePreferences({ selectedId: work.templateId || 'warm-life', ratio: work.ratio || '1:1', imageScale: work.imageScale || 1, imagePosition: work.imagePosition || 'center', processingMode: processingModeOf(work), sceneId: work.sceneId || 'studio', processingVersion: 2 })
