@@ -22,7 +22,7 @@ function loadPage(name, api = {}, wxOverrides = {}) {
         ...api
       }
     }, getApp() { return app },
-    wx: { showToast(value) { events.push(value) }, showModal(value) { events.push(value) }, navigateTo(value) { events.push(value) }, ...wxOverrides }
+    wx: { showToast(value) { events.push(value) }, showModal(value) { events.push(value) }, navigateTo(value) { events.push(value) }, navigateBack(value) { events.push(value) }, ...wxOverrides }
   }
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../../frontend/pages', name, `${name}.js`), 'utf8'), context)
   page.setData = (values, callback) => { Object.assign(page.data, values); if (callback) callback() }
@@ -49,6 +49,21 @@ test('旧版抠图偏好在生图可用时只迁移一次到 AI 场景', async (
   await new Promise(resolve => setImmediate(resolve))
   assert.equal(page.data.processingMode, 'ai-scene')
   assert.equal(saved.processingVersion, 2)
+})
+
+test('模板页展示工业品档案摘要并允许返回修改', async () => {
+  const { page, app, events } = loadPage('templates', {
+    getTemplates: async () => ({ data: [] }),
+    getCapabilities: async () => ({ data: { aiCutout: { available: false }, aiScene: { available: false, scenes: [] } } })
+  })
+  app.globalData.draft = { name: '三相异步电动机', modelNumber: 'YE3-132S-4', category: '机械设备', brandName: '远东电机' }
+  page.onLoad()
+  await new Promise(resolve => setImmediate(resolve))
+  assert.equal(page.data.productProfile.name, '三相异步电动机')
+  assert.equal(page.data.productProfile.modelNumber, 'YE3-132S-4')
+  assert.equal(page.data.productProfile.category, '机械设备')
+  page.editProfile()
+  assert.equal(events.at(-1).delta, 1)
 })
 
 test('图片上传失败不创建任务、不跳转', async () => {
