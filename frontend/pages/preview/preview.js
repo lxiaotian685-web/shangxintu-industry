@@ -2,7 +2,7 @@ const { dimensions, drawPoster } = require('../../services/poster')
 const localData = require('../../services/local-data')
 const album = require('../../services/album')
 Page({
-  data: { selected: 0, variants: ['商品主图', '卖点图', '促销图'], outputs: [], currentPath: '', loading: true, saving: false, savingAll: false, saveProgress: '', collecting: false, collected: false, error: '', permissionDenied: false, aiProcessed: false, aiMode: 'original', compareMode: 'processed', originalPath: '', processedPath: '' },
+  data: { productProfile: null, selected: 0, variants: ['商品主图', '卖点图', '促销图'], outputs: [], currentPath: '', loading: true, saving: false, savingAll: false, saveProgress: '', collecting: false, collected: false, error: '', permissionDenied: false, aiProcessed: false, aiMode: 'original', compareMode: 'processed', originalPath: '', processedPath: '' },
   onLoad() {
     this.draft = getApp().globalData.draft
     this.product = getApp().globalData.generation
@@ -10,7 +10,7 @@ Page({
       this.invalid = true
       wx.redirectTo({ url: '/pages/upload/upload' })
     } else {
-      this.setData({ aiProcessed: Boolean(this.product.aiProcessed), aiMode: this.product.aiMode || (this.product.aiProcessed ? 'cutout' : 'original'), originalPath: this.draft.imagePath, processedPath: this.product.renderImagePath || '' })
+      this.setData({ productProfile: { name: this.draft.name || '', modelNumber: this.draft.modelNumber || '未填写型号', category: this.draft.category || '未分类', brandName: this.draft.brandName || '未填写品牌' }, aiProcessed: Boolean(this.product.aiProcessed), aiMode: this.product.aiMode || (this.product.aiProcessed ? 'cutout' : 'original'), originalPath: this.draft.imagePath, processedPath: this.product.renderImagePath || '' })
     }
   },
   onReady() { if (!this.invalid) this.render() },
