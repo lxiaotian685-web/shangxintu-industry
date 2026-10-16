@@ -142,23 +142,36 @@ test('离开模板页后，迟到的请求不强制跳回预览', async () => {
 
 test('上传校验价格，并自动带入未点击添加的卖点', () => {
   const { page, app, events } = loadPage('upload')
-  Object.assign(page.data, { imagePath: 'local-image', name: '杯子', price: '1.234', featureText: '手作' })
+  Object.assign(page.data, { imagePath: 'local-image', name: '电动机', modelNumber: 'YE3-132S-4', price: '1.234', featureText: '一级能效' })
   page.next()
   assert.equal(events.some(event => event.url), false)
   page.data.price = '19.90'
   page.next()
-  assert.equal(app.globalData.draft.features[0], '手作')
+  assert.equal(app.globalData.draft.features[0], '一级能效')
+  assert.equal(app.globalData.draft.modelNumber, 'YE3-132S-4')
+  assert.equal(app.globalData.draft.category, '机械设备')
   assert.equal(events.at(-1).url, '/pages/templates/templates')
 })
 
-test('上传页恢复草稿，输入后同步保存', () => {
+test('工业品档案缺少型号时不能进入模板页', () => {
+  const { page, events } = loadPage('upload')
+  Object.assign(page.data, { imagePath: 'local-image', name: '电动机', modelNumber: '' })
+  page.next()
+  assert.equal(events.some(event => event.url), false)
+  assert.equal(events[0].title, '请上传图片并填写名称和型号')
+})
+
+test('上传页恢复工业品档案草稿，输入后同步保存', () => {
   let saved
-  const draft = { imagePath: 'saved-photo', name: '旧商品', price: '20', features: ['耐用'] }
+  const draft = { imagePath: 'saved-photo', name: '旧商品', modelNumber: 'OLD-01', category: '仪器仪表', price: '20', features: ['耐用'] }
   const { page } = loadPage('upload', { localData: { loadDraft: () => draft, saveDraft: value => { saved = value } } })
   page.onLoad()
   assert.equal(page.data.imagePath, 'saved-photo')
+  assert.equal(page.data.modelNumber, 'OLD-01')
+  assert.equal(page.data.category, '仪器仪表')
   page.onName({ detail: { value: '新商品' } })
   assert.equal(saved.name, '新商品')
+  assert.equal(saved.modelNumber, 'OLD-01')
 })
 
 test('预览页收藏整套且防止重复点击', async () => {
@@ -179,15 +192,18 @@ test('预览页收藏整套且防止重复点击', async () => {
 
 test('作品库区分 AI 场景与 AI 抠图，再次编辑恢复该作品的制作参数', () => {
   let savedPreferences
+  let savedDraft
   const works = [
-    { id: 'a', sourcePath: 'photo.png', name: '杯子', aiMode: 'scene', sceneId: 'premium', templateId: 'clean-studio', ratio: '3:4', imageScale: 1.3, imagePosition: 'top-left', outputs: ['1', '2', '3'] },
+    { id: 'a', sourcePath: 'photo.png', name: '电动机', modelNumber: 'YE3-132S-4', category: '机械设备', aiMode: 'scene', sceneId: 'premium', templateId: 'clean-studio', ratio: '3:4', imageScale: 1.3, imagePosition: 'top-left', outputs: ['1', '2', '3'] },
     { id: 'b', sourcePath: 'photo2.png', name: '盘子', aiProcessed: true, outputs: ['1', '2', '3'] }
   ]
-  const { page } = loadPage('works', { localData: { loadWorks: () => works, savePreferences: value => { savedPreferences = value } } })
+  const { page } = loadPage('works', { localData: { loadWorks: () => works, saveDraft: value => { savedDraft = value }, savePreferences: value => { savedPreferences = value } } })
   page.onShow()
   assert.equal(page.data.works[0].aiLabel, 'AI 场景')
   assert.equal(page.data.works[1].aiLabel, 'AI 抠图')
   page.reuse({ currentTarget: { dataset: { id: 'a' } } })
+  assert.equal(savedDraft.modelNumber, 'YE3-132S-4')
+  assert.equal(savedDraft.category, '机械设备')
   assert.equal(savedPreferences.processingMode, 'ai-scene')
   assert.equal(savedPreferences.selectedId, 'clean-studio')
   assert.equal(savedPreferences.sceneId, 'premium')

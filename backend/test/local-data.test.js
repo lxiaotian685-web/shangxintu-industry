@@ -38,10 +38,12 @@ test('模板偏好可以保存并恢复', () => {
 
 test('作品库最多六套，并删除被淘汰作品的三个文件', async () => {
   const { service, removed, wx } = loadService()
-  for (let index = 0; index < 7; index++) await service.addWork({ draft: { name: `商品${index}`, price: '', features: [] }, generation: { templateId: 'warm-life', ratio: '1:1' }, outputs: ['a', 'b', 'c'] })
+  for (let index = 0; index < 7; index++) await service.addWork({ draft: { name: `商品${index}`, modelNumber: `MODEL-${index}`, category: '机械设备', price: '', features: [] }, generation: { templateId: 'warm-life', ratio: '1:1' }, outputs: ['a', 'b', 'c'] })
   const works = service.loadWorks()
   assert.equal(works.length, 6)
   assert.equal(works[0].name, '商品6')
+  assert.equal(works[0].modelNumber, 'MODEL-6')
+  assert.equal(works[0].category, '机械设备')
   assert.equal(removed.length, 3)
   assert.deepEqual(service.removeWork(works[0].id).length, 5)
   assert.equal(removed.length, 6)
