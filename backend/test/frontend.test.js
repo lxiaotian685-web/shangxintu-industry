@@ -85,6 +85,17 @@ test('保存被拒绝时不提示成功，展示权限入口并恢复按钮', ()
   assert.equal(events[0].title, '未保存')
 })
 
+test('预览页展示工业品档案并兼容缺少品牌的旧草稿', () => {
+  const { page, app } = loadPage('preview')
+  app.globalData.draft = { imagePath: 'photo.png', name: '三相异步电动机', modelNumber: 'YE3-132S-4', category: '机械设备' }
+  app.globalData.generation = { mode: 'local-canvas', ratio: '1:1', templateId: 'warm-life' }
+  page.onLoad()
+  assert.equal(page.data.productProfile.name, '三相异步电动机')
+  assert.equal(page.data.productProfile.modelNumber, 'YE3-132S-4')
+  assert.equal(page.data.productProfile.category, '机械设备')
+  assert.equal(page.data.productProfile.brandName, '未填写品牌')
+})
+
 test('Canvas 制作三份 PNG，预览切换使用真实导出路径', async () => {
   let exports = 0
   const ctx = { fillRect() {}, fillText() {}, drawImage() {}, save() {}, restore() {}, beginPath() {}, rect() {}, clip() {}, measureText: text => ({ width: text.length * 30 }) }
