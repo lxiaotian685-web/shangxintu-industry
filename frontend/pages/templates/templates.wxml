@@ -1,28 +1,28 @@
 <view class="page">
-  <view class="topbar"><view class="brand"><view class="brand-mark">上</view><text>选择模板</text></view><view class="capsule">第 2 步</view></view>
-  <view class="stepper"><view class="step done"><view class="step-dot">✓</view><text>上传商品</text></view><view class="step active"><view class="step-dot">2</view><text>选择模板</text></view><view class="step"><view class="step-dot">3</view><text>制作图片</text></view></view>
-  <view class="selection-card card"><view class="selection-icon">▧</view><view><view class="section-title">商品已准备好</view><view class="muted">{{processingMode === 'ai-scene' ? '当前：AI 重构商业场景' : (processingMode === 'ai-cutout' ? '当前：AI 抠图后排版' : '当前：保留原图排版')}}</view></view></view>
+  <view class="topbar"><view class="brand"><view class="brand-mark">上</view><text>配置生成方案</text></view><view class="capsule">第 2 步</view></view>
+  <view class="stepper"><view class="step done"><view class="step-dot">✓</view><text>产品资料</text></view><view class="step active"><view class="step-dot">2</view><text>生成方案</text></view><view class="step"><view class="step-dot">3</view><text>核对导出</text></view></view>
+  <view class="selection-card card"><view class="selection-icon">▧</view><view><view class="section-title">产品资料已就绪</view><view class="muted">{{processingMode === 'ai-scene' ? '当前：AI 重构工业场景' : (processingMode === 'ai-cutout' ? '当前：AI 抠图后排版' : '当前：保留原图排版')}}</view></view></view>
   <view class="section-label"><view class="section-title">图片比例</view><view class="muted">按发布渠道选择</view></view>
   <view class="ratios">
-    <view class="ratio-card {{ratio === '1:1' ? 'active' : ''}}" data-ratio="1:1" bindtap="ratio"><view class="ratio-shape square"></view><view><text>1:1 方图</text><text class="ratio-help">商品主图 / 朋友圈</text></view><view class="check">{{ratio === '1:1' ? '✓' : ''}}</view></view>
-    <view class="ratio-card {{ratio === '3:4' ? 'active' : ''}}" data-ratio="3:4" bindtap="ratio"><view class="ratio-shape portrait"></view><view><text>3:4 竖图</text><text class="ratio-help">内容平台 / 海报</text></view><view class="check">{{ratio === '3:4' ? '✓' : ''}}</view></view>
+    <view class="ratio-card {{ratio === '1:1' ? 'active' : ''}}" data-ratio="1:1" role="button" bindtap="ratio"><view class="ratio-shape square"></view><view><text>1:1 方图</text><text class="ratio-help">产品目录 / 企业官网</text></view><view class="check">{{ratio === '1:1' ? '✓' : ''}}</view></view>
+    <view class="ratio-card {{ratio === '3:4' ? 'active' : ''}}" data-ratio="3:4" role="button" bindtap="ratio"><view class="ratio-shape portrait"></view><view><text>3:4 竖图</text><text class="ratio-help">朋友圈 / 渠道海报</text></view><view class="check">{{ratio === '3:4' ? '✓' : ''}}</view></view>
   </view>
   <view class="section-label"><view class="section-title">视觉模板</view><view class="muted">已选模板会用于三张图</view></view>
   <view class="template-grid"><view class="template {{selectedId === item.id ? 'selected' : ''}}" wx:for="{{templates}}" wx:key="id" data-id="{{item.id}}" bindtap="select"><view class="cover {{item.tone}}"><view class="mock-frame"><view class="mock-cup"></view><text>{{item.tone === 'sale' ? 'SALE' : 'NEW'}}</text></view><view wx:if="{{selectedId === item.id}}" class="selected-badge">✓</view></view><view class="meta"><view>{{item.name}}</view><text>{{item.description}}</text></view></view></view>
   <view class="section-label"><view class="section-title">商品处理</view><view class="service-status {{aiAvailable === true ? 'online' : (aiAvailable === false ? 'offline' : '')}}">{{aiStatusText}}</view></view>
   <view class="processing-options">
-    <view class="processing-card featured {{processingMode === 'ai-scene' ? 'active' : ''}} {{aiSceneAvailable === false ? 'disabled' : ''}}" data-mode="ai-scene" bindtap="processingMode"><view class="recommend">推荐</view><view class="processing-icon scene">AI</view><view><text>AI 重构商业场景</text><text class="processing-help">直接优化背景、光影和商品氛围</text></view><view class="check">{{processingMode === 'ai-scene' ? '✓' : ''}}</view></view>
-    <view class="processing-card {{processingMode === 'ai-cutout' ? 'active' : ''}} {{aiAvailable === false ? 'disabled' : ''}}" data-mode="ai-cutout" bindtap="processingMode"><view class="processing-icon">AI</view><view><text>智能抠出商品</text><text class="processing-help">{{aiAvailable === false ? '需要先配置后端 AI 密钥' : '去除杂乱背景，融入模板底色'}}</text></view><view class="check">{{processingMode === 'ai-cutout' ? '✓' : ''}}</view></view>
+    <view class="processing-card featured {{processingMode === 'ai-scene' ? 'active' : ''}} {{aiSceneAvailable === false ? 'disabled' : ''}}" data-mode="ai-scene" bindtap="processingMode"><view class="recommend">推荐</view><view class="processing-icon scene">AI</view><view><text>AI 重构工业场景</text><text class="processing-help">优化背景和光影，结果需人工复核</text></view><view class="check">{{processingMode === 'ai-scene' ? '✓' : ''}}</view></view>
+    <view class="processing-card {{processingMode === 'ai-cutout' ? 'active' : ''}} {{aiAvailable === false ? 'disabled' : ''}}" data-mode="ai-cutout" bindtap="processingMode"><view class="processing-icon">AI</view><view><text>智能抠出产品</text><text class="processing-help">{{aiAvailable === false ? '需要先配置后端 AI 密钥' : '去除杂乱背景，融入模板底色'}}</text></view><view class="check">{{processingMode === 'ai-cutout' ? '✓' : ''}}</view></view>
     <view class="processing-card {{processingMode === 'original' ? 'active' : ''}}" data-mode="original" bindtap="processingMode"><view class="processing-icon plain">原</view><view><text>保留原始照片</text><text class="processing-help">AI 不可用时仍可继续排版</text></view><view class="check">{{processingMode === 'original' ? '✓' : ''}}</view></view>
   </view>
   <block wx:if="{{processingMode === 'ai-scene'}}">
-    <view class="section-label"><view class="section-title">AI 场景风格</view><view class="muted">只改变环境，不应改变商品</view></view>
+    <view class="section-label"><view class="section-title">AI 场景风格</view><view class="muted">只改变环境，不应改变产品</view></view>
     <view class="scene-grid"><view wx:for="{{scenes}}" wx:key="id" class="scene-card {{sceneId === item.id ? 'active' : ''}}" data-id="{{item.id}}" bindtap="scene"><view class="scene-swatch scene-{{item.id}}"></view><view><text>{{item.name}}</text><text class="scene-help">{{item.description}}</text></view></view></view>
   </block>
-  <view class="section-label"><view class="section-title">商品大小</view><view class="muted">控制商品在模板中的占比</view></view>
+  <view class="section-label"><view class="section-title">产品大小</view><view class="muted">控制产品在模板中的占比</view></view>
   <view class="scale-options"><view class="scale-item {{imageScale === 1 ? 'active' : ''}}" data-scale="1" bindtap="imageScale">完整</view><view class="scale-item {{imageScale === 1.15 ? 'active' : ''}}" data-scale="1.15" bindtap="imageScale">突出</view><view class="scale-item {{imageScale === 1.3 ? 'active' : ''}}" data-scale="1.3" bindtap="imageScale">特写</view></view>
-  <view class="section-label"><view class="section-title">商品位置</view><view class="muted">九宫格调整构图重心</view></view>
+  <view class="section-label"><view class="section-title">产品位置</view><view class="muted">九宫格调整构图重心</view></view>
   <view class="position-grid"><view wx:for="{{positions}}" wx:key="*this" class="position-dot {{imagePosition === item ? 'active' : ''}}" data-position="{{item}}" bindtap="imagePosition"><text></text></view></view>
-  <view class="notice">AI 生图可能误改商品。成片前必须核对颜色、形状、数量、包装、文字与 Logo。</view>
-  <view class="bottom-action"><view class="action-summary"><text>预计制作 3 张 PNG</text><text class="action-help">{{loadingText || (ratio + ' · 商品主图 / 卖点图 / 促销图')}}</text></view><button class="primary" loading="{{loading}}" disabled="{{loading}}" bindtap="generate">{{loading ? '正在处理…' : '开始制作 →'}}</button></view>
+  <view class="notice">AI 生图可能误改结构。成片前必须核对型号、接口、颜色、形状、数量、铭牌文字与 Logo。</view>
+  <view class="bottom-action"><view class="action-summary"><text>预计制作 3 张 PNG</text><text class="action-help">{{loadingText || (ratio + ' · 产品主图 / 参数卖点 / 渠道海报')}}</text></view><button class="primary" loading="{{loading}}" disabled="{{loading}}" bindtap="generate">{{loading ? '正在处理…' : '生成产品套图 →'}}</button></view>
 </view>

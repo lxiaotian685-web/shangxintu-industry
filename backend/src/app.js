@@ -28,12 +28,12 @@ function validateGeneration(input) {
   if (input.productName.trim().length > 30) return 'productName 最多 30 字'
   if (!templates.some(item => item.id === input.templateId)) return 'templateId 不存在'
   if (!['1:1', '3:4'].includes(input.ratio)) return 'ratio 只支持 1:1 或 3:4'
-  if (typeof input.imageId !== 'string') return '请先上传商品图片'
+  if (typeof input.imageId !== 'string') return '请先上传产品图片'
   if (input.price !== undefined && (typeof input.price !== 'string' || (input.price !== '' && !/^\d{1,8}(\.\d{1,2})?$/.test(input.price)))) return '价格最多八位整数和两位小数'
-  if (input.features !== undefined && (!Array.isArray(input.features) || input.features.length > 3 || input.features.some(value => typeof value !== 'string' || !value.trim() || value.length > 20))) return '卖点最多三条，每条 1 至 20 字'
-  if (input.promotionText !== undefined && (typeof input.promotionText !== 'string' || input.promotionText.length > 12)) return '促销按钮文案最多 12 字'
-  if (input.imageScale !== undefined && ![1, 1.15, 1.3].includes(input.imageScale)) return '商品大小选项无效'
-  if (input.imagePosition !== undefined && !['top-left', 'top', 'top-right', 'left', 'center', 'right', 'bottom-left', 'bottom', 'bottom-right'].includes(input.imagePosition)) return '商品位置选项无效'
+  if (input.features !== undefined && (!Array.isArray(input.features) || input.features.length > 3 || input.features.some(value => typeof value !== 'string' || !value.trim() || value.length > 20))) return '关键参数或卖点最多三条，每条 1 至 20 字'
+  if (input.promotionText !== undefined && (typeof input.promotionText !== 'string' || input.promotionText.length > 12)) return '行动按钮文案最多 12 字'
+  if (input.imageScale !== undefined && ![1, 1.15, 1.3].includes(input.imageScale)) return '产品大小选项无效'
+  if (input.imagePosition !== undefined && !['top-left', 'top', 'top-right', 'left', 'center', 'right', 'bottom-left', 'bottom', 'bottom-right'].includes(input.imagePosition)) return '产品位置选项无效'
   if (input.brandName !== undefined && (typeof input.brandName !== 'string' || input.brandName.length > 12)) return '品牌名称最多 12 字'
   if (input.brandColor !== undefined && !['#b53f00', '#1f5f99', '#14705c', '#6b46a2', '#222222'].includes(input.brandColor)) return '品牌颜色选项无效'
   return null
@@ -71,7 +71,7 @@ async function app(request, response) {
   if (request.method === 'POST' && cutoutMatch) {
     try {
       const original = await findImage(cutoutMatch[1])
-      if (!original) return sendJson(response, 404, { error: '商品图片不存在，请重新上传' })
+      if (!original) return sendJson(response, 404, { error: '产品图片不存在，请重新上传' })
       const hash = aiState.imageHash(original)
       const cachedId = aiState.cachedImage(hash)
       const cached = cachedId && await findImage(cachedId)
@@ -97,7 +97,7 @@ async function app(request, response) {
   if (request.method === 'POST' && sceneMatch) {
     try {
       const original = await findImage(sceneMatch[1])
-      if (!original) return sendJson(response, 404, { error: '商品图片不存在，请重新上传' })
+      if (!original) return sendJson(response, 404, { error: '产品图片不存在，请重新上传' })
       const input = await readJson(request)
       const scene = SCENES.find(item => item.id === input.sceneId)
       if (!scene || !['1:1', '3:4'].includes(input.ratio)) return sendJson(response, 400, { error: 'AI 场景或图片比例无效' })
@@ -127,7 +127,7 @@ async function app(request, response) {
       const input = await readJson(request)
       const error = validateGeneration(input)
       if (error) return sendJson(response, 400, { error })
-      if (!await findImage(input.imageId)) return sendJson(response, 400, { error: '商品图片不存在，请重新上传' })
+      if (!await findImage(input.imageId)) return sendJson(response, 400, { error: '产品图片不存在，请重新上传' })
       const generation = saveGeneration({
         id: randomUUID(),
         productName: input.productName.trim(),

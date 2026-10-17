@@ -1,7 +1,7 @@
 {
   "description": "上新图微信小程序前端",
   "compileType": "miniprogram",
-  "libVersion": "3.5.8",
+  "libVersion": "3.17.2",
   "miniprogramRoot": "./",
   "appid": "wx009cdce2edf6e608",
   "setting": {
