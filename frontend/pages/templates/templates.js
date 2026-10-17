@@ -1,15 +1,15 @@
 const api = require('../../services/api')
 const localData = require('../../services/local-data')
 const fallbackTemplates = [
-  { id: 'warm-life', name: '奶油生活封面', description: '柔光影棚、陈列台与温暖品牌质感', tone: 'warm' },
-  { id: 'clean-studio', name: '高端杂志主图', description: '展台空间、编辑网格与克制高级感', tone: 'clean' },
-  { id: 'season-sale', name: '爆款促销主视觉', description: '强对比展台、大价格与转化行动区', tone: 'sale' }
+  { id: 'warm-life', name: '制造橙标准版', description: '暖灰展台、清晰主体与稳重品牌感', tone: 'warm' },
+  { id: 'clean-studio', name: '技术蓝图版', description: '冷静网格、参数信息与设备技术感', tone: 'clean' },
+  { id: 'season-sale', name: '新品发布版', description: '高对比展台、参考报价与询价行动区', tone: 'sale' }
 ]
 const fallbackScenes = [
-  { id: 'studio', name: '高级影棚', description: '干净背景与柔和商品光' },
-  { id: 'lifestyle', name: '生活方式', description: '自然光与真实使用氛围' },
-  { id: 'premium', name: '质感暗调', description: '聚光与高级商业氛围' },
-  { id: 'fresh', name: '清新色块', description: '明亮活泼的上新视觉' }
+  { id: 'studio', name: '洁净影棚', description: '中性背景与清晰产品光' },
+  { id: 'lifestyle', name: '应用场景', description: '车间或实验室使用氛围' },
+  { id: 'premium', name: '深色质感', description: '聚光与高端设备氛围' },
+  { id: 'fresh', name: '品牌色块', description: '明亮色块与现代科技感' }
 ]
 Page({
   data: { templates: fallbackTemplates, scenes: fallbackScenes, sceneId: 'studio', positions: ['top-left', 'top', 'top-right', 'left', 'center', 'right', 'bottom-left', 'bottom', 'bottom-right'], selectedId: 'warm-life', ratio: '1:1', imageScale: 1, imagePosition: 'center', processingMode: 'ai-cutout', aiAvailable: null, aiSceneAvailable: null, aiStatusText: '正在检查 AI 服务', loading: false, loadingText: '' },
@@ -45,7 +45,7 @@ Page({
     if (this.data.loading) return
     const draft = getApp().globalData.draft
     if (!draft) return wx.showModal({ title: '还没有商品信息', content: '请先完成上传步骤', showCancel: false, success: () => wx.redirectTo({ url: '/pages/upload/upload' }) })
-    this.setData({ loading: true, loadingText: '正在上传商品…' })
+    this.setData({ loading: true, loadingText: '正在上传产品原图…' })
     const selection = { templateId: this.data.selectedId, ratio: this.data.ratio, imageScale: this.data.imageScale, imagePosition: this.data.imagePosition }
     api.uploadImage(draft.imagePath)
       .then(async ({ data }) => {
@@ -58,7 +58,7 @@ Page({
         return { imageId: processed.id, renderImagePath, aiProcessed: true, aiMode: this.data.processingMode === 'ai-scene' ? 'scene' : 'cutout', aiProvider: processed.provider, sceneId: processed.sceneId || '' }
       })
       .then(async processed => {
-        if (!this.disposed) this.setData({ loadingText: '正在制作三张商品图…' })
+        if (!this.disposed) this.setData({ loadingText: '正在制作三张产品素材…' })
         const response = await api.createGeneration({ productName: draft.name, imageId: processed.imageId, price: draft.price, promotionText: draft.promotionText, brandName: draft.brandName, brandColor: draft.brandColor, features: draft.features, ...selection })
         return { ...response, processed }
       })

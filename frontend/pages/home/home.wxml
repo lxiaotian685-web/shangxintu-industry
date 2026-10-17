@@ -1,1 +1,37 @@
-<view class="page home"><view class="topbar"><view class="brand"><view class="brand-mark">上</view><text>上新图</text></view><view class="capsule">商品图工作台</view></view><view class="hero"><view class="eyebrow">✦ 原图保真 · AI 抠图可选</view><view class="title">随手拍，也能做出<text>好商品图</text></view><view class="muted intro">上传商品原片，自动搭配版式、卖点和价格，一次生成主图、卖点图和促销图。</view><button class="primary" bindtap="start">{{hasDraft ? '继续制作「' + draftName + '」 →' : '开始制作商品图 →'}}</button></view><view wx:if="{{hasDraft || recentWork}}" class="quick-grid"><view wx:if="{{hasDraft}}" class="quick-card" bindtap="start"><view class="quick-icon">续</view><view><text>未完成草稿</text><text class="small">{{draftName}}</text></view></view><view wx:if="{{recentWork}}" class="quick-card" bindtap="previewRecent"><image src="{{recentWork.outputs[0]}}" mode="aspectFill"/><view><text>最近作品</text><text class="small">{{recentWork.name}} · 点开查看</text></view></view></view><view class="showcase card"><view class="showcase-head"><view><view class="section-title">实拍效果还原对比</view><view class="muted">保留商品细节，提升信息表达</view></view><view class="mini-badge">3 秒了解</view></view><view class="compare"><view class="photo raw"><view class="photo-icon">▧</view><text>手机原片</text></view><view class="arrow">→</view><view class="photo polished"><view class="poster-copy"><text>NEW</text><text class="strong">新品上架</text><text class="small">¥ 89</text></view><view class="cup-shape"></view><view class="corner-label">模板排版</view></view></view></view><view class="section-row"><view><view class="section-title">一键制作整套所需</view><view class="muted">三种用途，一次准备齐全</view></view></view><view class="feature-grid"><view class="feature-card"><view class="feature-icon orange">▣</view><text>商品主图</text><text class="small">突出主体与价格</text></view><view class="feature-card"><view class="feature-icon violet">✦</view><text>卖点介绍</text><text class="small">梳理核心优势</text></view><view class="feature-card"><view class="feature-icon green">%</view><text>促销海报</text><text class="small">适合社群推广</text></view></view><view class="section-row"><view><view class="section-title">精选上新模板</view><view class="muted">适合小店日常上新</view></view><view class="link" bindtap="openTemplates">全部模板 ›</view></view><scroll-view class="template-scroll" scroll-x><view class="home-template warm"><view class="mock-product"></view><text>暖调留白</text><text class="small">手作 · 家居</text></view><view class="home-template clean"><view class="mock-product"></view><text>简洁画框</text><text class="small">通用 · 电商</text></view><view class="home-template sale"><view class="mock-product"></view><text>新季促销</text><text class="small">活动 · 社群</text></view></scroll-view><view class="trust"><text>✓ 商品原图可回退</text><text>✓ 价格文字可修改</text><text>✓ AI 抠图可选</text></view></view>
+<view class="page home">
+  <view class="topbar">
+    <view class="brand"><view class="brand-mark">上</view><text>上新图 Industry</text></view>
+    <view class="capsule">工业品上新台</view>
+  </view>
+  <view class="hero">
+    <view class="eyebrow">AI 赋能产业服务 · 结果可复核</view>
+    <view class="title">一套产品资料，快速完成<text>专业上新</text></view>
+    <view class="muted intro">上传产品原片，录入关键参数与品牌信息，一次生成产品主图、参数卖点图和渠道海报。</view>
+    <button class="primary" bindtap="start">{{hasDraft ? '继续制作「' + draftName + '」 →' : '开始制作产品套图 →'}}</button>
+  </view>
+  <view wx:if="{{hasDraft || recentWork}}" class="quick-grid">
+    <view wx:if="{{hasDraft}}" class="quick-card" hover-class="tap-active" bindtap="start"><view class="quick-icon">续</view><view><text>未完成草稿</text><text class="small">{{draftName}}</text></view></view>
+    <view wx:if="{{recentWork}}" class="quick-card" hover-class="tap-active" bindtap="previewRecent"><image src="{{recentWork.outputs[0]}}" mode="aspectFill"/><view><text>最近资料</text><text class="small">{{recentWork.name}} · 点开核对</text></view></view>
+  </view>
+  <view class="showcase card">
+    <view class="showcase-head"><view><view class="section-title">从现场原片到标准上新图</view><view class="muted">保留产品细节，统一信息表达</view></view><view class="mini-badge">流程预览</view></view>
+    <view class="compare">
+      <view class="photo raw"><view class="photo-icon">▧</view><text>样品原片</text><text class="photo-note">背景与信息未整理</text></view>
+      <view class="arrow">→</view>
+      <view class="photo polished"><view class="poster-copy"><text>MODEL SX-18</text><text class="strong">光电传感器</text><text class="small">IP67 · 10–30V DC</text></view><view class="product-shape"></view><view class="corner-label">标准化排版</view></view>
+    </view>
+  </view>
+  <view class="section-row"><view><view class="section-title">一次准备三种发布素材</view><view class="muted">从展示到询价，覆盖常用渠道</view></view></view>
+  <view class="feature-grid">
+    <view class="feature-card"><view class="feature-icon orange">▣</view><text>产品主图</text><text class="small">突出主体与型号</text></view>
+    <view class="feature-card"><view class="feature-icon violet">≡</view><text>参数卖点</text><text class="small">呈现关键规格</text></view>
+    <view class="feature-card"><view class="feature-icon green">↗</view><text>渠道海报</text><text class="small">用于发布与询价</text></view>
+  </view>
+  <view class="section-row"><view><view class="section-title">工业品视觉方案</view><view class="muted">兼顾技术感、品牌感与转化</view></view><view class="link" hover-class="tap-active" bindtap="openTemplates">查看方案 ›</view></view>
+  <scroll-view class="template-scroll" scroll-x enhanced show-scrollbar="{{false}}">
+    <view class="home-template warm"><view class="mock-product"></view><text>制造橙标准版</text><text class="small">通用 · 工业品</text></view>
+    <view class="home-template clean"><view class="mock-product"></view><text>技术蓝图版</text><text class="small">参数 · 设备</text></view>
+    <view class="home-template sale"><view class="mock-product"></view><text>新品发布版</text><text class="small">渠道 · 询价</text></view>
+  </scroll-view>
+  <view class="trust"><text>✓ 原图随时可回退</text><text>✓ 关键信息人工核对</text><text>✓ AI 图片处理可选</text></view>
+</view>

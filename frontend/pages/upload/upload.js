@@ -3,9 +3,9 @@ Page({
   data: { imagePath: '', name: '', price: '', promotionText: '', brandName: '', brandColor: '#b53f00', brandColors: ['#b53f00', '#1f5f99', '#14705c', '#6b46a2', '#222222'], featureText: '', features: [] },
   onLoad() {
     const draft = localData.loadDraft()
-    if (draft) this.setData({ imagePath: draft.imagePath || '', name: draft.name || '', price: draft.price || '', promotionText: draft.promotionText || '', brandName: draft.brandName || '', brandColor: draft.brandColor || '#b53f00', features: Array.isArray(draft.features) ? draft.features : [] })
+    if (draft) this.setData({ imagePath: draft.imagePath || '', name: draft.name || '', price: draft.price || '', promotionText: draft.promotionText || '', brandName: draft.brandName || '', brandColor: draft.brandColor || '#b53f00', featureText: draft.featureText || '', features: Array.isArray(draft.features) ? draft.features : [] })
   },
-  persist() { localData.saveDraft({ imagePath: this.data.imagePath, name: this.data.name, price: this.data.price, promotionText: this.data.promotionText, brandName: this.data.brandName, brandColor: this.data.brandColor, features: this.data.features }) },
+  persist() { localData.saveDraft({ imagePath: this.data.imagePath, name: this.data.name, price: this.data.price, promotionText: this.data.promotionText, brandName: this.data.brandName, brandColor: this.data.brandColor, featureText: this.data.featureText, features: this.data.features }) },
   chooseImage() {
     wx.chooseMedia({ count: 1, mediaType: ['image'], sourceType: ['album', 'camera'], success: ({ tempFiles }) => {
       if (!tempFiles.length) return
@@ -18,22 +18,29 @@ Page({
   onPromotion(e) { this.setData({ promotionText: e.detail.value }, () => this.persist()) },
   onBrandName(e) { this.setData({ brandName: e.detail.value }, () => this.persist()) },
   selectBrandColor(e) { this.setData({ brandColor: e.currentTarget.dataset.color }, () => this.persist()) },
-  onFeature(e) { this.setData({ featureText: e.detail.value }) },
+  onFeature(e) { this.setData({ featureText: e.detail.value }, () => this.persist()) },
   addFeature() {
     const value = this.data.featureText.trim()
-    if (!value || this.data.features.length >= 3) return
+    if (!value) return wx.showToast({ title: '请先填写参数或卖点', icon: 'none' })
+    if (this.data.features.includes(value)) return wx.showToast({ title: '这条信息已经添加', icon: 'none' })
+    if (this.data.features.length >= 3) return wx.showToast({ title: '最多添加三条信息', icon: 'none' })
     this.setData({ features: [...this.data.features, value], featureText: '' }, () => this.persist())
   },
   removeFeature(e) { this.setData({ features: this.data.features.filter((_, index) => index !== Number(e.currentTarget.dataset.index)) }, () => this.persist()) },
   next() {
     if (!this.data.imagePath || !this.data.name.trim()) return wx.showToast({ title: '请上传图片并填写名称', icon: 'none' })
     if (this.data.price.trim() && !/^\d{1,8}(\.\d{1,2})?$/.test(this.data.price.trim())) return wx.showToast({ title: '价格最多八位整数和两位小数', icon: 'none' })
-    if (this.data.featureText.trim()) {
-      if (this.data.features.length >= 3) return wx.showToast({ title: '最多三个卖点，请清空未添加内容', icon: 'none' })
-      this.addFeature()
+    const features = this.data.features.map(value => value.trim()).filter(Boolean)
+    const pending = this.data.featureText.trim()
+    if (pending && !features.includes(pending)) {
+      if (features.length >= 3) return wx.showToast({ title: '最多三条参数，请删除一条后再继续', icon: 'none' })
+      features.push(pending)
     }
-    getApp().globalData.draft = { imagePath: this.data.imagePath, name: this.data.name.trim(), price: this.data.price.trim(), promotionText: this.data.promotionText.trim(), brandName: this.data.brandName.trim(), brandColor: this.data.brandColor, features: this.data.features }
-    localData.saveDraft(getApp().globalData.draft)
-    wx.navigateTo({ url: '/pages/templates/templates' })
+    const draft = { imagePath: this.data.imagePath, name: this.data.name.trim(), price: this.data.price.trim(), promotionText: this.data.promotionText.trim(), brandName: this.data.brandName.trim(), brandColor: this.data.brandColor, features }
+    this.setData({ features, featureText: '' }, () => {
+      getApp().globalData.draft = draft
+      localData.saveDraft(draft)
+      wx.navigateTo({ url: '/pages/templates/templates' })
+    })
   }
 })

@@ -1,7 +1,7 @@
 const themes = {
-  'warm-life': { background: '#f4e7d8', paper: '#fffaf4', ink: '#44291f', accent: '#a33900', soft: '#e3b58f', light: '#f9f1e7', deep: '#7d2b0b', label: 'WARM STUDIO' },
-  'clean-studio': { background: '#e9edf2', paper: '#ffffff', ink: '#111c2d', accent: '#263143', soft: '#b8c5d6', light: '#f7f9fb', deep: '#111827', label: 'CLEAN EDITION' },
-  'season-sale': { background: '#8f2607', paper: '#fff1e8', ink: '#42190d', accent: '#ffcf5a', soft: '#dd6840', light: '#ffeadf', deep: '#5f1704', label: 'SEASON SALE' }
+  'warm-life': { background: '#f4e7d8', paper: '#fffaf4', ink: '#44291f', accent: '#a33900', soft: '#e3b58f', light: '#f9f1e7', deep: '#7d2b0b', label: 'INDUSTRY STANDARD' },
+  'clean-studio': { background: '#e9edf2', paper: '#ffffff', ink: '#111c2d', accent: '#263143', soft: '#b8c5d6', light: '#f7f9fb', deep: '#111827', label: 'TECHNICAL EDITION' },
+  'season-sale': { background: '#8f2607', paper: '#fff1e8', ink: '#42190d', accent: '#ffcf5a', soft: '#dd6840', light: '#ffeadf', deep: '#5f1704', label: 'PRODUCT LAUNCH' }
 }
 
 const layouts = {
@@ -158,7 +158,7 @@ function drawMain(ctx, image, product, themeId, theme, box, height) {
     const priceColor = themeId === 'season-sale' ? theme.accent : theme.accent
     write(ctx, `¥ ${product.price}`, x, y + 8, 'bold 48px sans-serif', priceColor, 500)
   }
-  write(ctx, '商品主图 · PRODUCT COVER', x, height - 78, '24px sans-serif', themeId === 'season-sale' ? '#ffffff' : theme.accent, 600)
+  write(ctx, '产品主图 · PRODUCT COVER', x, height - 78, '24px sans-serif', themeId === 'season-sale' ? '#ffffff' : theme.accent, 600)
 }
 
 function drawDetails(ctx, image, product, themeId, theme, box, height) {
@@ -168,14 +168,14 @@ function drawDetails(ctx, image, product, themeId, theme, box, height) {
   fill(ctx, themeId === 'season-sale' ? '#6b1904' : theme.paper, x - 20, box.y - 22, maxWidth + 36, Math.min(520, height - box.y - 120))
   write(ctx, 'DETAILS', x, box.y, 'bold 26px sans-serif', themeId === 'season-sale' ? theme.accent : theme.accent, maxWidth)
   let y = writeLines(ctx, product.productName, x, box.y + 54, maxWidth, 52, 'bold 40px sans-serif', themeId === 'season-sale' ? '#ffffff' : theme.ink)
-  const features = product.features && product.features.length ? product.features : ['补充商品卖点，让顾客更快了解它']
+  const features = product.features && product.features.length ? product.features : ['补充关键参数，便于客户快速了解产品']
   features.forEach((feature, index) => {
     fill(ctx, themeId === 'season-sale' ? theme.accent : theme.soft, x, y + 20, 42, 42)
     write(ctx, `0${index + 1}`, x + 7, y + 28, 'bold 18px sans-serif', theme.ink, 34)
     y = writeLines(ctx, feature, x + 58, y + 22, maxWidth - 58, 38, '28px sans-serif', themeId === 'season-sale' ? '#ffffff' : theme.ink)
     y += 20
   })
-  write(ctx, '卖点图 · KEY FEATURES', x, height - 78, '24px sans-serif', themeId === 'season-sale' ? '#ffffff' : theme.accent, maxWidth)
+  write(ctx, '参数卖点 · KEY SPECS', x, height - 78, '24px sans-serif', themeId === 'season-sale' ? '#ffffff' : theme.accent, maxWidth)
 }
 
 function drawSale(ctx, image, product, themeId, theme, box, height) {
@@ -183,18 +183,18 @@ function drawSale(ctx, image, product, themeId, theme, box, height) {
   const x = themeId === 'clean-studio' ? 142 : 58
   const maxWidth = box.x - x - 42
   fill(ctx, themeId === 'season-sale' ? '#6b1904' : theme.paper, x - 18, 150, maxWidth + 32, Math.min(450, height - 310))
-  write(ctx, themeId === 'season-sale' ? '限时上新' : 'NEW DROP', x, 170, 'bold 27px sans-serif', themeId === 'season-sale' ? theme.accent : theme.accent, maxWidth)
+  write(ctx, themeId === 'season-sale' ? '新品发布' : 'NEW PRODUCT', x, 170, 'bold 27px sans-serif', themeId === 'season-sale' ? theme.accent : theme.accent, maxWidth)
   let y = writeLines(ctx, product.productName, x, 225, maxWidth, 50, 'bold 40px sans-serif', themeId === 'season-sale' ? '#ffffff' : theme.ink)
   y += 36
   if (product.price) {
-    write(ctx, '上新价', x, y, '24px sans-serif', themeId === 'season-sale' ? '#ffe6d9' : theme.ink, maxWidth)
+    write(ctx, '参考报价', x, y, '24px sans-serif', themeId === 'season-sale' ? '#ffe6d9' : theme.ink, maxWidth)
     write(ctx, `¥${product.price}`, x, y + 42, 'bold 62px sans-serif', themeId === 'season-sale' ? theme.accent : theme.accent, maxWidth)
   } else {
     write(ctx, '欢迎咨询', x, y, 'bold 40px sans-serif', themeId === 'season-sale' ? theme.accent : theme.accent, maxWidth)
   }
   fill(ctx, themeId === 'season-sale' ? theme.accent : theme.accent, x, height - 150, maxWidth, 58)
-  write(ctx, `${product.promotionText || '立即了解'}  →`, x + 20, height - 136, 'bold 24px sans-serif', themeId === 'season-sale' ? theme.ink : '#ffffff', maxWidth - 40)
-  write(ctx, '促销图 · PROMOTION', x, height - 78, '22px sans-serif', themeId === 'season-sale' ? '#ffffff' : theme.accent, maxWidth)
+  write(ctx, `${product.promotionText || '获取产品资料'}  →`, x + 20, height - 136, 'bold 24px sans-serif', themeId === 'season-sale' ? theme.ink : '#ffffff', maxWidth - 40)
+  write(ctx, '渠道海报 · CHANNEL POSTER', x, height - 78, '22px sans-serif', themeId === 'season-sale' ? '#ffffff' : theme.accent, maxWidth)
 }
 
 function drawPoster(ctx, image, product, variant) {

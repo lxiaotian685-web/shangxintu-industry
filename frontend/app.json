@@ -7,7 +7,7 @@
     "pages/works/works"
   ],
   "window": {
-    "navigationBarTitleText": "上新图",
+    "navigationBarTitleText": "上新图 Industry",
     "navigationBarBackgroundColor": "#FBF9F5",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#FBF9F5"
@@ -20,8 +20,8 @@
     "backgroundColor": "#FFFFFF",
     "borderStyle": "white",
     "list": [
-      { "pagePath": "pages/home/home", "text": "首页" },
-      { "pagePath": "pages/works/works", "text": "作品" }
+      { "pagePath": "pages/home/home", "text": "工作台" },
+      { "pagePath": "pages/works/works", "text": "资料库" }
     ]
   }
 }

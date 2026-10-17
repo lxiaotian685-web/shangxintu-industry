@@ -161,6 +161,20 @@ test('上传页恢复草稿，输入后同步保存', () => {
   assert.equal(saved.name, '新商品')
 })
 
+test('关键参数草稿会保留，并阻止重复添加', () => {
+  let saved
+  const { page, events } = loadPage('upload', { localData: { loadDraft: () => ({ featureText: 'IP67', features: ['10–30V DC'] }), saveDraft: value => { saved = value } } })
+  page.onLoad()
+  assert.equal(page.data.featureText, 'IP67')
+  page.addFeature()
+  assert.equal(Array.from(page.data.features).join('|'), '10–30V DC|IP67')
+  page.onFeature({ detail: { value: 'IP67' } })
+  page.addFeature()
+  assert.equal(page.data.features.length, 2)
+  assert.equal(events.at(-1).title, '这条信息已经添加')
+  assert.equal(saved.featureText, 'IP67')
+})
+
 test('预览页收藏整套且防止重复点击', async () => {
   let calls = 0
   let release
